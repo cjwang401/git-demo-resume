@@ -1,0 +1,86 @@
+body{
+    background: black;
+    color: white;
+    margin: 0;
+}
+
+/* 开始做RScard,先将默认蓝色干掉 */
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
+
+.clearfix::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.topNavBar{
+    padding: 20px 16px;
+}
+.topNavBar>nav{
+    padding-top: 5px;
+    padding-bottom: 6px;
+}
+/* 先去掉li的前面点，以及开始的默认样式 */
+.topNavBar>nav>ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* 开始让li不要使垂直，横起来.记住两步！！ 先给子元素加上floatlef，再给其父元素加上class clearfix属性*/
+.topNavBar>nav>ul>li{
+    float: left;
+    /* 给每个li左边距17px,产生分割效果 */
+    margin-left: 17px;
+    margin-right: 17px;
+}
+
+/* 开始改变字体大小,样式 */
+.topNavBar>nav>ul>li>a{
+    font-size: 13px;
+    color: #b7b7b7;
+    /* 去掉下划线默认样式 */
+    text-decoration: none;
+    /* 加粗字体 */
+    font-weight: bold; 
+    /* 提前加好边框,防止hover让位置移动 */
+    border: 3px solid transparent;
+
+    padding-bottom: 3px;
+    padding-top: 3px;
+    /* 此处会发现,a的高度与li的高度不同,此处一个解决办法,记住! */
+    display: block;
+
+}
+
+/* 前面讲RScard 与分类栏变成一行,直接再html中添加内联样式,现在添加鼠标放上去会出来一跳红线 */
+.topNavBar>nav>ul>li>a:hover{
+    border-bottom: 3px solid #e06567;
+}
+
+
+
+
+
+/* 开始做RScard ,改变字体,大小*/
+.topNavBar>.logo{
+    font-size: 24px;
+    font-family: "Arial Black";
+    padding-top: 3px;
+    padding-bottom: 4px;
+}
+.topNavBar>.logo>.rs{
+    margin-right: 4px;
+    color: #e6686a;
+}
+.topNavBar>.logo>.card{
+    color: #9A9DA2;
+    padding-right: 2px
+}
+
+/* 将左边的RS 与右边的对齐 */
