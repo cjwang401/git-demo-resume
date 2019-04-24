@@ -1,12 +1,22 @@
 body{
-    background: black;
-    color: white;
+    background: #efefef;
+    color: black;
     margin: 0;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+
+hr{
+    height: 0;
+    border: none;
+    border-top: 1px solid #dedede;
 }
 
 /* 开始做RScard,先将默认蓝色干掉 */
 a{
-    color: inherit;
+color: inherit;
     text-decoration: none;
 }
 
@@ -18,14 +28,21 @@ a{
 }
 
 .topNavBar{
-    padding: 20px 16px;
+    padding: 20px 0 20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
-.topNavBar>nav{
+.topNavBar-inner{
+    padding: 0 16px;
+}
+.topNavBar nav{
     padding-top: 5px;
     padding-bottom: 6px;
 }
 /* 先去掉li的前面点，以及开始的默认样式 */
-.topNavBar>nav>ul{
+.topNavBar nav>ul{
     list-style: none;
     margin: 0;
     padding: 0;
@@ -33,7 +50,7 @@ a{
 
 
 /* 开始让li不要使垂直，横起来.记住两步！！ 先给子元素加上floatlef，再给其父元素加上class clearfix属性*/
-.topNavBar>nav>ul>li{
+.topNavBar nav>ul>li{
     float: left;
     /* 给每个li左边距17px,产生分割效果 */
     margin-left: 17px;
@@ -41,7 +58,7 @@ a{
 }
 
 /* 开始改变字体大小,样式 */
-.topNavBar>nav>ul>li>a{
+.topNavBar nav>ul>li>a{
     font-size: 13px;
     color: #b7b7b7;
     /* 去掉下划线默认样式 */
@@ -59,7 +76,7 @@ a{
 }
 
 /* 前面讲RScard 与分类栏变成一行,直接再html中添加内联样式,现在添加鼠标放上去会出来一跳红线 */
-.topNavBar>nav>ul>li>a:hover{
+.topNavBar nav>ul>li>a:hover{
     border-bottom: 3px solid #e06567;
 }
 
@@ -68,19 +85,149 @@ a{
 
 
 /* 开始做RScard ,改变字体,大小*/
-.topNavBar>.logo{
+.topNavBar .logo{
     font-size: 24px;
     font-family: "Arial Black";
     padding-top: 3px;
     padding-bottom: 4px;
 }
-.topNavBar>.logo>.rs{
+.topNavBar .logo>.rs{
     margin-right: 4px;
     color: #e6686a;
 }
-.topNavBar>.logo>.card{
+.topNavBar .logo>.card{
     color: #9A9DA2;
     padding-right: 2px
 }
 
 /* 将左边的RS 与右边的对齐 */
+
+.banner{
+    background-image: url(../img/rs-cover.jpg);
+    /* 不到万不得已，不要用height */
+    background-position: center center;
+    background-size: cover;
+    height: 515px;
+}
+.banner .mask{
+    height: 515px;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+
+
+/* 开始做下一个，有头像的那个usercard */
+.userCard{
+    /* 记住@@@   最大宽度是好的，如果用width，不能出现自适应 */
+    max-width: 940px;
+    /* 记住@@@   记住一个div在页面自动居中的方法*/
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+}
+
+/* 设置usercard里面的hello那个样式标签 */
+.userCard .welcome{
+    background: #e6686a;
+    color: white;
+    /* 记住：此处的span绝对不能设置width以及height，因为span不接受设置宽高 */
+    /* 内联元素的一个特点：不接受宽高 */
+    /* 即:不能width:70px */
+    /* height:29px; */
+    /* 想要设置宽高,要变成block元素 */
+    /* display: block; */
+    /* width: 70px;
+    height: 29px; */
+    /* 但是上面这种写法以后不可取 */ 
+    padding: 4px 16px;
+    line-height: 20px;
+    top: 4px;
+    /* 这是position是给那个小三角形 */
+    position: relative;
+
+}
+
+/* 如何用css画一个三角形，考试重点 */
+.userCard .welcome .triangle{
+    display: block;
+    border:10px solid transparent;
+    width:0px;
+    border-left-color: #e6686a;
+    border-top-width: 0px;
+    /* 记住@@@如何将一个这个三角形放在div的下面，要采用绝对定位。给这个子元素一个position：absolute给他的父元素一个position：relative */
+    position: absolute;
+    top: 100%;
+    left: 4px;
+}
+
+.userCard .picture{
+    float: left;  
+}
+
+.userCard .text{
+    float: left;
+    margin-left: 65px;
+    /* 记住：@@@我们的hr线不够长，需要设置宽度，但是以后千万别用width会出bug */
+    width: 470px;
+}
+
+/* 记住@@@ 有时候为什么要在一个div里面多加一个div呢，这里就可以调节头像图片和hello的位置 */
+.userCard .pictureAndText{
+    padding: 50px;
+}
+
+.userCard .text h1{
+    margin-top: 36px;
+    margin-bottom: 10px;
+}
+
+.userCard .text hr{
+    margin: 20px 0;
+}
+
+.userCard dl dt,
+.userCard dl dd{
+    float: left;
+    /* 记住：@@@利用宽度50%自动换行 */
+    /* width: 50%; */
+    padding: 5px 0;
+    
+}
+
+.userCard dl dt{
+    width: 30%;
+    font-weight: bold;
+}
+
+.userCard dl dd{
+    width: 70%;
+    color: #9da0a7;
+}
+
+.userCard > footer.media{
+    background: #ee6688;
+    text-align: center;
+}
+
+.userCard > footer.media > a{
+    display: inline-block;
+    width: 40px;
+    line-height: 30px;
+    padding: 5px 0;
+    border-radius: 50%;
+    margin: 16px 16px;
+}
+
+.userCard > footer > a:hover{
+    background: #cf5d5f;
+}
+.userCard svg{
+    width: 30px;
+    height: 30px;
+    fill: white;
+    margin: 0 16;
+    /* 记住：@@@ 如何图标明显偏上，就用 */
+    vertical-align: top;
+}
+
+
